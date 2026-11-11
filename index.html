@@ -22,12 +22,12 @@
 :root{
   --bordeaux:#651719; --bordeaux-deep:#4d1012;
   --creme:#F1EBDD; --noir:#111110;
-  --gris:#7a756c; --gris-clair:#b9b3a7; --lime:#c8f542;
+  --gris:#5c574f; --gris-clair:#b9b3a7; --lime:#c8f542;
   --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
   --ease:cubic-bezier(.22,1,.36,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--sans);background:var(--creme);color:var(--noir);font-weight:300;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--creme);color:var(--noir);font-weight:400;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--bordeaux);color:var(--creme)}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -67,11 +67,11 @@ html.lenis,html.lenis body{height:auto}
 .nav .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px rgba(200,245,66,.4);animation:pulse 2.4s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .nav ul{display:flex;gap:1.4rem;list-style:none}
-.nav ul a{color:var(--gris-clair);text-decoration:none;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:400;position:relative;transition:color .3s;padding:.3rem 0;display:inline-block}
+.nav ul a{color:var(--gris-clair);text-decoration:none;font-size:.86rem;letter-spacing:.01em;font-weight:500;position:relative;transition:color .3s;padding:.3rem 0;display:inline-block}
 .nav ul a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--lime);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
 .nav ul a:hover,.nav ul a.active{color:var(--creme)}
 .nav ul a:hover::after,.nav ul a.active::after{transform:scaleX(1);transform-origin:left}
-.nav .cta-mini{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--noir);background:var(--creme);text-decoration:none;padding:.45rem .95rem;border-radius:100px;font-weight:700;transition:background .3s,color .3s}
+.nav .cta-mini{font-family:var(--sans);font-size:.84rem;letter-spacing:0;color:var(--noir);background:var(--creme);text-decoration:none;padding:.45rem .95rem;border-radius:100px;font-weight:700;transition:background .3s,color .3s}
 .nav .cta-mini:hover{background:var(--lime)}
 .burger{display:none;background:none;border:none;cursor:pointer;padding:.3rem}
 .burger span{display:block;width:20px;height:1.5px;background:var(--creme);margin:5px 0;transition:.3s}
@@ -79,7 +79,7 @@ html.lenis,html.lenis body{height:auto}
 /* ============ SECTIONS ============ */
 section{position:relative;padding:9rem 6vw;z-index:1}
 .wrap{max-width:1200px;margin:0 auto;position:relative}
-.meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);display:flex;align-items:center;gap:.8rem}
+.meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);display:flex;align-items:center;gap:.8rem}
 .meta::before{content:'';width:34px;height:1px;background:currentColor;opacity:.5}
 h2.title{font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,5.2vw,4.2rem);line-height:1.08;margin:1.4rem 0 2.5rem;letter-spacing:-.01em}
 h2.title em{font-style:italic;font-weight:400}
@@ -99,7 +99,7 @@ h2.title em{font-style:italic;font-weight:400}
 .hero h1 em{font-style:italic;font-weight:400;color:#fff}
 .hero-sub{margin:2rem 0 2.8rem;max-width:34rem;color:rgba(241,235,221,.82);font-size:clamp(.98rem,1.3vw,1.12rem);line-height:1.75}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:1rem 1.7rem;border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:.7rem;transition:background .3s,color .3s,border-color .3s;will-change:transform}
+.btn{font-family:var(--sans);font-size:.95rem;letter-spacing:0;text-decoration:none;padding:1rem 1.7rem;border-radius:100px;font-weight:600;display:inline-flex;align-items:center;gap:.7rem;transition:background .3s,color .3s,border-color .3s;will-change:transform}
 .btn-solid{background:var(--creme);color:var(--noir)}
 .btn-solid:hover{background:var(--lime)}
 .btn-ghost{border:1px solid rgba(241,235,221,.35);color:var(--creme)}
@@ -115,14 +115,14 @@ h2.title em{font-style:italic;font-weight:400}
 .tag-b{bottom:24%;right:0%;animation-delay:-2s}
 .tag-c{bottom:2%;left:12%;animation-delay:-4s}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.hero-3d .hint-click{position:absolute;top:0;right:8%;font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,235,221,.35);animation:float 5s ease-in-out infinite;animation-delay:-1s}
+.hero-3d .hint-click{position:absolute;top:0;right:8%;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,235,221,.72);animation:float 5s ease-in-out infinite;animation-delay:-1s}
 .hint-click b{color:var(--lime);font-weight:400}
 
-.scroll-hint{position:absolute;bottom:2.2rem;left:6vw;z-index:3;display:flex;align-items:center;gap:1rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(241,235,221,.55)}
+.scroll-hint{position:absolute;bottom:2.2rem;left:6vw;z-index:3;display:flex;align-items:center;gap:1rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(241,235,221,.72)}
 .scroll-hint .line{width:1px;height:44px;background:rgba(241,235,221,.25);overflow:hidden;position:relative}
 .scroll-hint .line::after{content:'';position:absolute;top:-50%;left:0;width:100%;height:50%;background:var(--lime);animation:drip 2s var(--ease) infinite}
 @keyframes drip{to{top:110%}}
-.hero-coord{position:absolute;bottom:2.2rem;right:6vw;z-index:3;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:rgba(241,235,221,.4);text-align:right;line-height:2}
+.hero-coord{position:absolute;bottom:2.2rem;right:6vw;z-index:3;font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:rgba(241,235,221,.72);text-align:right;line-height:2}
 
 
 /* ============ CERVEAU 3D / PANEL ============ */
@@ -142,7 +142,7 @@ h2.title em{font-style:italic;font-weight:400}
 .brain-panel ul{list-style:none;display:grid;gap:.34rem}
 .brain-panel li{font-size:.76rem;color:var(--gris-clair);padding-left:.95rem;position:relative;line-height:1.45}
 .brain-panel li::before{content:'';position:absolute;left:0;top:.5em;width:5px;height:5px;border-radius:50%;background:var(--lime)}
-.brain-panel .bp-foot{margin-top:.8rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,235,221,.35)}
+.brain-panel .bp-foot{margin-top:.8rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,235,221,.62)}
 
 /* Bloc détail IA dans Expertises */
 .exp-out{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--lime);margin-top:1rem;opacity:.9}
@@ -166,7 +166,8 @@ h2.title em{font-style:italic;font-weight:400}
 
 /* ============ MARQUEE ============ */
 .marquee{background:var(--noir);color:var(--creme);overflow:hidden;padding:1.4rem 0;border-top:1px solid rgba(241,235,221,.1);border-bottom:1px solid rgba(241,235,221,.1);position:relative;z-index:2}
-.marquee.lime{background:var(--lime);color:var(--noir)}
+.marquee.lime{background:var(--bordeaux-deep);color:var(--creme);border-color:rgba(241,235,221,.08)}
+.marquee.lime .mq-track span::after{color:var(--lime);opacity:.9}
 .mq-track{display:flex;width:max-content;animation:mq 26s linear infinite}
 .marquee:hover .mq-track{animation-play-state:paused}
 .mq-track span{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.2rem,2.4vw,1.9rem);white-space:nowrap;padding:0 1.6rem;display:flex;align-items:center;gap:1.6rem}
@@ -222,7 +223,7 @@ h2.title em{font-style:italic;font-weight:400}
 .works-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
 .works-sub{max-width:30rem;color:var(--gris);font-size:.98rem}
 .filters{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 3.5rem}
-.filter-btn{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;background:none;border:1px solid rgba(17,17,16,.25);color:var(--gris);padding:.55rem 1.15rem;border-radius:100px;cursor:pointer;transition:all .3s}
+.filter-btn{font-family:var(--sans);font-size:.86rem;letter-spacing:0;font-weight:500;background:none;border:1px solid rgba(17,17,16,.25);color:var(--gris);padding:.55rem 1.15rem;border-radius:100px;cursor:pointer;transition:all .3s}
 .filter-btn:hover{border-color:var(--noir);color:var(--noir);transform:translateY(-2px)}
 .filter-btn.active{background:var(--noir);border-color:var(--noir);color:var(--creme)}
 .works-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3rem 2rem;perspective:1200px}
@@ -244,7 +245,7 @@ h2.title em{font-style:italic;font-weight:400}
 .card:hover h3{color:var(--bordeaux)}
 .card p{color:var(--gris);font-size:.9rem;max-width:34rem}
 .card .stack{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--gris);margin-top:.9rem}
-.card .case-link{margin-top:1.1rem;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--noir);text-decoration:none;font-weight:700}
+.card .case-link{margin-top:1.1rem;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.92rem;letter-spacing:0;color:var(--noir);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;font-weight:600}
 .card .case-link .arr{transition:transform .35s var(--ease)}
 .card .case-link:hover .arr{transform:translateX(5px)}
 .card .case-link:hover{color:var(--bordeaux)}
@@ -271,11 +272,11 @@ h2.title em{font-style:italic;font-weight:400}
 .steps-track{display:flex;gap:3.5rem;padding-left:max(6vw,calc((100vw - 1200px)/2));will-change:transform}
 .step{flex:0 0 clamp(300px,32vw,420px);border-top:1px solid rgba(241,235,221,.25);padding-top:2rem;position:relative;transition:border-color .4s}
 .step:hover{border-color:var(--lime)}
-.step-num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(3rem,6vw,5rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(241,235,221,.5);transition:color .5s,-webkit-text-stroke-color .5s;display:block}
+.step-num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(3rem,6vw,5rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(241,235,221,.85);transition:color .5s,-webkit-text-stroke-color .5s;display:block}
 .step:hover .step-num{color:var(--lime);-webkit-text-stroke-color:var(--lime)}
 .step h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2vw,1.7rem);margin:1.6rem 0 .9rem}
-.step p{color:rgba(241,235,221,.78);font-size:.95rem;max-width:26rem}
-.step .idx{position:absolute;top:2rem;right:0;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:rgba(241,235,221,.4)}
+.step p{color:rgba(241,235,221,.9);font-size:.95rem;max-width:26rem}
+.step .idx{position:absolute;top:2rem;right:0;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:rgba(241,235,221,.68)}
 .method-progress{max-width:1200px;margin:3.5rem auto 0;width:100%;height:1px;background:rgba(241,235,221,.15);position:relative}
 .method-progress i{position:absolute;inset:0;background:var(--lime);transform:scaleX(0);transform-origin:left}
 
@@ -311,7 +312,7 @@ h2.title em{font-style:italic;font-weight:400}
 .c-line .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);transition:color .3s}
 .c-line:hover .k{color:var(--bordeaux)}
 .c-line .v{font-size:.9rem;color:var(--noir);font-weight:400;text-align:right;overflow-wrap:anywhere}
-.cv-btn{margin-top:2.4rem;display:inline-flex;align-items:center;gap:.8rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--noir);color:var(--creme);text-decoration:none;padding:1.05rem 1.8rem;border-radius:100px;transition:background .3s;will-change:transform}
+.cv-btn{margin-top:2.4rem;display:inline-flex;align-items:center;gap:.8rem;font-family:var(--sans);font-size:.95rem;letter-spacing:0;font-weight:600;background:var(--noir);color:var(--creme);text-decoration:none;padding:1.05rem 1.8rem;border-radius:100px;transition:background .3s;will-change:transform}
 .cv-btn:hover{background:var(--bordeaux)}
 
 /* Formulaire — labels flottants */
@@ -328,7 +329,7 @@ form .f-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-t
 .field textarea:focus~label,.field textarea:not(:placeholder-shown)~label{top:-.35rem;font-size:.56rem;color:var(--lime)}
 .field .underline{position:absolute;bottom:0;left:0;height:1px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .field input:focus~.underline,.field textarea:focus~.underline{transform:scaleX(1)}
-form button{width:100%;border:none;cursor:pointer;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--creme);color:var(--noir);padding:1.05rem;border-radius:100px;transition:background .3s;position:relative;overflow:hidden;margin-top:.6rem}
+form button{width:100%;border:none;cursor:pointer;font-family:var(--sans);font-size:.95rem;letter-spacing:0;font-weight:600;background:var(--creme);color:var(--noir);padding:1.05rem;border-radius:100px;transition:background .3s;position:relative;overflow:hidden;margin-top:.6rem}
 form button span{position:relative;z-index:1}
 form button::after{content:'';position:absolute;inset:0;background:var(--lime);transform:translateY(101%);transition:transform .45s var(--ease)}
 form button:hover::after{transform:translateY(0)}
@@ -384,6 +385,41 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .mq-track{animation:none}
 }
+
+/* ============ ACCESSIBILITÉ (proposition) ============ */
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:4px}
+.philo :focus-visible,.career :focus-visible,.works :focus-visible,.edu :focus-visible,.contact-lines :focus-visible,.cv-btn:focus-visible{outline-color:var(--bordeaux)}
+.field input:focus-visible,.field textarea:focus-visible{outline:none}
+.cursor-dot{box-shadow:0 0 0 1.5px var(--noir)}
+.hero-3d .hint-click{top:auto;bottom:-1.5rem;right:0;left:auto}
+.brain-legend span{font-size:.64rem}
+.method h2.title,.step h3,.step p,.interlude-quote,.hero h1,.hero-sub{text-shadow:0 2px 22px rgba(40,8,10,.75)}
+.interlude::before{background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(77,16,18,.25) 20%,rgba(77,16,18,.85) 100%)}
+@media (max-width:960px){
+  .hero{align-items:flex-start;padding-top:6.5rem}
+  .hero-3d{height:40vh!important;margin-top:0!important}
+  .brain-legend{flex-wrap:nowrap!important;overflow-x:auto;top:0!important;left:-6vw;right:-6vw;padding:0 6vw;scrollbar-width:none}
+  .brain-legend::-webkit-scrollbar{display:none}
+  .brain-legend span{flex:none}
+}
+.philo-cards{max-width:none;gap:1.5rem;align-items:stretch}
+.philo-card{background:#f8f4ec;border:1px solid rgba(17,17,16,.1);border-radius:10px;padding:2rem 1.8rem 2.2rem;position:relative;overflow:hidden;transition:transform .45s var(--ease),border-color .35s,box-shadow .45s var(--ease)}
+.philo-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--bordeaux);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.philo-card:hover{transform:translateY(-6px);border-color:rgba(101,23,25,.35);box-shadow:0 22px 40px -24px rgba(77,16,18,.45)}
+.philo-card:hover::before{transform:scaleX(1)}
+.philo-card .pc-num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:2.4rem;line-height:1;color:var(--bordeaux);display:block}
+.philo-card h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.2;margin:1.2rem 0 .8rem;color:var(--noir)}
+.philo-card p{color:var(--gris);font-size:.97rem;line-height:1.65}
+.philo-card p strong{color:var(--noir);font-weight:600}
+.philo-cards{perspective:1100px}
+.philo-card{transform-style:preserve-3d;will-change:transform}
+.philo-card::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(101,23,25,.10),transparent 70%)}
+.philo-card:hover::after{opacity:1}
+.philo-card > *{transform:translateZ(24px)}
+.philo-card .pc-num{transform:translateZ(46px)}
+@media (hover:hover){.philo-cards:hover .philo-card:not(:hover){opacity:.55;filter:saturate(.7)}}
+.philo-card{transition:transform .45s var(--ease),border-color .35s,box-shadow .45s var(--ease),opacity .4s,filter .4s}
+.expert + .tools{padding-top:2rem}
 </style>
 </head>
 <body>
@@ -474,10 +510,10 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
   <div class="wrap">
     <p class="meta" data-fade>01 — Ma philosophie</p>
     <blockquote data-split>« Une idée n'a de valeur que lorsqu'elle devient une <em>solution</em>. »</blockquote>
-    <div class="philo-cols">
-      <p data-fade>Partir d'un problème, comprendre les besoins qui se cachent derrière et construire une réponse concrète. Mon approche combine <strong>analyse métier</strong>, <strong>gestion de projet</strong>, <strong>conception produit</strong> et <strong>compréhension technique</strong>.</p>
-      <p data-fade>Je peux structurer une initiative, définir sa feuille de route, concevoir son fonctionnement, expérimenter une solution et coordonner les acteurs nécessaires à sa réalisation.</p>
-      <p data-fade>L'IA, l'automatisation et les technologies numériques sont des <strong>leviers</strong> que j'utilise lorsqu'ils répondent réellement au besoin.</p>
+    <div class="philo-cols philo-cards">
+      <article class="philo-card"><span class="pc-num">01</span><h3>Comprendre le besoin</h3><p>Partir d'un problème, comprendre les besoins qui se cachent derrière et construire une réponse concrète. Mon approche combine <strong>analyse métier</strong>, <strong>gestion de projet</strong>, <strong>conception produit</strong> et <strong>compréhension technique</strong>.</p></article>
+      <article class="philo-card"><span class="pc-num">02</span><h3>Structurer & piloter</h3><p>Je peux structurer une initiative, définir sa feuille de route, concevoir son fonctionnement, expérimenter une solution et coordonner les acteurs nécessaires à sa réalisation.</p></article>
+      <article class="philo-card"><span class="pc-num">03</span><h3>La technologie comme levier</h3><p>L'IA, l'automatisation et les technologies numériques sont des <strong>leviers</strong> que j'utilise lorsqu'ils répondent réellement au besoin.</p></article>
     </div>
     <p class="philo-line" data-fade>Stratégie — Conception — Exécution</p>
     <div class="stats">
@@ -550,10 +586,26 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
   </div>
 </section>
 
+<!-- ================= 8. OUTILS ================= -->
+<section class="tools" id="skills">
+  <div class="wrap">
+    <p class="meta" data-fade>03 — Outils &amp; compétences</p>
+    <h2 class="title" data-split>Une boîte à outils <em>pragmatique.</em></h2>
+    <div class="tools-grid">
+      <div class="tool-fam" data-fade><h3>IA &amp; modèles</h3><ul><li>IA générative</li><li>OpenAI API</li><li>Claude · Gemini · Together AI</li><li>Hugging Face</li><li>Fine-tuning</li><li>Ollama · vLLM</li><li>Google AI Studio</li></ul></div>
+      <div class="tool-fam" data-fade><h3>RAG &amp; agents</h3><ul><li>Systèmes RAG</li><li>Bases vectorielles</li><li>Embeddings</li><li>LangChain</li><li>LangGraph</li><li>LangSmith</li><li>n8n</li></ul></div>
+      <div class="tool-fam" data-fade><h3>Marketing &amp; CRM</h3><ul><li>SEO · SEM</li><li>Automatisation marketing</li><li>Brevo</li><li>Zoho CRM</li><li>Search Console</li><li>Google Analytics</li></ul></div>
+      <div class="tool-fam" data-fade><h3>Finance &amp; pilotage</h3><ul><li>Analyse des coûts</li><li>Suivi budgétaire</li><li>Analyse de rentabilité</li><li>Indicateurs KPI</li><li>Aide à la décision</li><li>Tableau Desktop</li></ul></div>
+      <div class="tool-fam" data-fade><h3>Management</h3><ul><li>Coordination d'équipes</li><li>Parties prenantes</li><li>Répartition des tâches</li><li>Suivi des objectifs</li><li>Agile / Scrum</li><li>Gestion des risques</li></ul></div>
+      <div class="tool-fam" data-fade><h3>Outils projet</h3><ul><li>Jira</li><li>MS Project</li><li>Trello</li><li>Python</li><li>SQL</li><li>MS Excel</li></ul></div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= 4. PARCOURS ================= -->
 <section class="career" id="career">
   <div class="wrap">
-    <p class="meta" data-fade>03 — Parcours professionnel</p>
+    <p class="meta" data-fade>04 — Parcours professionnel</p>
     <h2 class="title" data-split>Transformer les besoins en <em>réalisations.</em></h2>
     <div class="timeline">
       <article class="job" data-fade>
@@ -608,7 +660,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
 <!-- ================= 5. PORTFOLIO ================= -->
 <section class="works" id="works">
   <div class="wrap">
-    <p class="meta" data-fade>04 — Portfolio de projets</p>
+    <p class="meta" data-fade>05 — Portfolio de projets</p>
     <div class="works-head">
       <h2 class="title" data-split style="margin-bottom:0">Des idées, des systèmes, <em>des solutions.</em></h2>
       <p class="works-sub" data-fade>Chaque projet commence par une problématique. Mon travail consiste à la comprendre, à concevoir une réponse et à organiser sa réalisation.</p>
@@ -634,7 +686,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
                 <path d="M210 125h45M385 100v80M385 245h45M210 285h45M320 130v80"/>
               </g>
               <circle cx="320" cy="95" r="4" fill="#c8f542"/><circle cx="210" cy="285" r="4" fill="#c8f542"/>
-              <text x="320" y="370" text-anchor="middle" fill="#F1EBDD" fill-opacity=".45" font-family="monospace" font-size="12" letter-spacing="4">COTATION · TRANSIT · FACTURATION</text>
+              <text x="320" y="370" text-anchor="middle" fill="#F1EBDD" fill-opacity=".75" font-family="monospace" font-size="12" letter-spacing="4">COTATION · TRANSIT · FACTURATION</text>
             </svg>
           </div>
           <span class="card-status"><i></i>En production</span>
@@ -659,7 +711,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
                 <path d="M184 128l98 48M456 128l-98 48M184 282l98-48M456 282l-98-48"/>
               </g>
               <circle cx="320" cy="200" r="5" fill="#c8f542"/><circle cx="150" cy="110" r="4" fill="#c8f542"/><circle cx="500" cy="300" r="4" fill="#c8f542"/>
-              <text x="320" y="376" text-anchor="middle" fill="#F1EBDD" fill-opacity=".4" font-family="monospace" font-size="12" letter-spacing="4">RAG · AGENTS · ORCHESTRATION</text>
+              <text x="320" y="376" text-anchor="middle" fill="#F1EBDD" fill-opacity=".75" font-family="monospace" font-size="12" letter-spacing="4">RAG · AGENTS · ORCHESTRATION</text>
             </svg>
           </div>
           <span class="card-status"><i></i>Prototype fonctionnel</span>
@@ -685,7 +737,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
               </g>
               <path d="M158 200h-40" stroke="#c8f542" stroke-width="2"/><path d="M560 200h-40" stroke="#c8f542" stroke-width="2"/>
               <circle cx="190" cy="200" r="4" fill="#c8f542"/><circle cx="480" cy="200" r="4" fill="#c8f542"/>
-              <text x="320" y="376" text-anchor="middle" fill="#F1EBDD" fill-opacity=".4" font-family="monospace" font-size="12" letter-spacing="4">TRIGGER · WORKFLOW · ACTION</text>
+              <text x="320" y="376" text-anchor="middle" fill="#F1EBDD" fill-opacity=".75" font-family="monospace" font-size="12" letter-spacing="4">TRIGGER · WORKFLOW · ACTION</text>
             </svg>
           </div>
           <span class="card-status"><i></i>POC opérationnel</span>
@@ -712,7 +764,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
               </g>
               <rect x="145" y="250" width="120" height="34" fill="#651719"/>
               <circle cx="320" cy="90" r="4" fill="#651719"/>
-              <text x="320" y="370" text-anchor="middle" fill="#111110" fill-opacity=".5" font-family="monospace" font-size="12" letter-spacing="4">WIREFRAME · PROTOTYPE · TEST</text>
+              <text x="320" y="370" text-anchor="middle" fill="#111110" fill-opacity=".75" font-family="monospace" font-size="12" letter-spacing="4">WIREFRAME · PROTOTYPE · TEST</text>
             </svg>
           </div>
           <span class="card-status"><i></i>Prototype fonctionnel</span>
@@ -732,7 +784,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
             <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
               <rect width="640" height="400" fill="#111110"/>
               <g stroke="#F1EBDD" stroke-opacity=".18" fill="none" stroke-dasharray="6 8"><rect x="120" y="80" width="400" height="240"/></g>
-              <text x="320" y="205" text-anchor="middle" fill="#F1EBDD" fill-opacity=".35" font-family="monospace" font-size="14" letter-spacing="6">PROJET À VENIR</text>
+              <text x="320" y="205" text-anchor="middle" fill="#F1EBDD" fill-opacity=".75" font-family="monospace" font-size="14" letter-spacing="6">PROJET À VENIR</text>
             </svg>
           </div>
           <span class="card-status"><i></i>À documenter</span>
@@ -769,7 +821,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
 <section class="method" id="method" data-blob="method">
   <div class="method-pin" id="methodPin">
     <div class="method-head">
-      <p class="meta" data-fade>05 — Méthode de travail</p>
+      <p class="meta" data-fade>06 — Méthode de travail</p>
       <h2 class="title" data-split style="margin-bottom:0">Une méthode pour faire <em>avancer les idées.</em></h2>
     </div>
     <div class="steps-track" id="stepsTrack">
@@ -786,7 +838,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
 <!-- ================= 7. FORMATION ================= -->
 <section class="edu" id="education">
   <div class="wrap">
-    <p class="meta" data-fade>06 — Formation</p>
+    <p class="meta" data-fade>07 — Formation</p>
     <h2 class="title" data-split>Un parcours <em>orienté projet.</em></h2>
     <div class="edu-list">
       <div class="edu-row" data-fade><div><h3>MBA 2 — Management de projet, innovation et technologie</h3><span class="school">MBA ESG Paris</span></div><span class="year">2024</span></div>
@@ -796,21 +848,6 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
   </div>
 </section>
 
-<!-- ================= 8. OUTILS ================= -->
-<section class="tools" id="skills">
-  <div class="wrap">
-    <p class="meta" data-fade>07 — Outils &amp; compétences</p>
-    <h2 class="title" data-split>Une boîte à outils <em>pragmatique.</em></h2>
-    <div class="tools-grid">
-      <div class="tool-fam" data-fade><h3>IA &amp; modèles</h3><ul><li>IA générative</li><li>OpenAI API</li><li>Claude · Gemini · Together AI</li><li>Hugging Face</li><li>Fine-tuning</li><li>Ollama · vLLM</li><li>Google AI Studio</li></ul></div>
-      <div class="tool-fam" data-fade><h3>RAG &amp; agents</h3><ul><li>Systèmes RAG</li><li>Bases vectorielles</li><li>Embeddings</li><li>LangChain</li><li>LangGraph</li><li>LangSmith</li><li>n8n</li></ul></div>
-      <div class="tool-fam" data-fade><h3>Marketing &amp; CRM</h3><ul><li>SEO · SEM</li><li>Automatisation marketing</li><li>Brevo</li><li>Zoho CRM</li><li>Search Console</li><li>Google Analytics</li></ul></div>
-      <div class="tool-fam" data-fade><h3>Finance &amp; pilotage</h3><ul><li>Analyse des coûts</li><li>Suivi budgétaire</li><li>Analyse de rentabilité</li><li>Indicateurs KPI</li><li>Aide à la décision</li><li>Tableau Desktop</li></ul></div>
-      <div class="tool-fam" data-fade><h3>Management</h3><ul><li>Coordination d'équipes</li><li>Parties prenantes</li><li>Répartition des tâches</li><li>Suivi des objectifs</li><li>Agile / Scrum</li><li>Gestion des risques</li></ul></div>
-      <div class="tool-fam" data-fade><h3>Outils projet</h3><ul><li>Jira</li><li>MS Project</li><li>Trello</li><li>Python</li><li>SQL</li><li>MS Excel</li></ul></div>
-    </div>
-  </div>
-</section>
 
 <!-- ================= 9. CONTACT ================= -->
 <section class="contact" id="contact">
@@ -835,7 +872,7 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
         <div class="field"><input type="text" id="f-subject" name="subject" placeholder=" " required><label for="f-subject">Sujet</label><span class="underline"></span></div>
         <div class="field"><textarea id="f-msg" name="message" placeholder=" " required></textarea><label for="f-msg">Description du projet</label><span class="underline"></span></div>
         <button type="submit" id="sendBtn"><span>Envoyer →</span></button>
-        <p class="form-note" id="formNote">Intégration : renseignez votre endpoint Formspree dans le script (variable <code style="color:var(--lime)">FORMSPREE_ENDPOINT</code>) pour un envoi direct. Sans configuration, le message s'ouvre dans votre client e-mail.</p>
+        <p class="form-note" id="formNote">Votre message s'ouvrira dans votre messagerie. Vous pouvez aussi m'écrire directement par e-mail.</p>
         <p class="form-ok" id="formOk">Message préparé — votre logiciel e-mail va s'ouvrir. Merci !</p>
       </form>
     </div>
@@ -880,7 +917,9 @@ const CV_URL = '';             // ex: 'cv-mohamed-ndiaye.pdf'
 
 if (LINKEDIN_URL) { const l=document.getElementById('liLink'); l.href=LINKEDIN_URL; l.querySelector('.v').textContent=LINKEDIN_URL.replace('https://',''); }
 if (GITHUB_URL)  { const g=document.getElementById('ghLink'); g.href=GITHUB_URL; g.querySelector('.v').textContent=GITHUB_URL.replace('https://',''); }
-if (CV_URL) document.getElementById('cvBtn').href = CV_URL;
+if (CV_URL) document.getElementById('cvBtn').href = CV_URL; else document.getElementById('cvBtn').style.display='none';
+if (!LINKEDIN_URL) document.getElementById('liLink').style.display='none';
+if (!GITHUB_URL) document.getElementById('ghLink').style.display='none';
 
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE = window.matchMedia('(pointer: fine)').matches;
@@ -1195,11 +1234,11 @@ document.getElementById('toTop').addEventListener('click', () => {
     { short:'Marketing & CRM', name:'Marketing digital & CRM', color:0xf1ebdd,
       css:'#F1EBDD', pos:[1.42, 0.66, -0.15], count:84, spread:.8,
       skills:['SEO · SEM & visibilité en ligne','Automatisation marketing — Brevo','Gestion de la relation client — Zoho CRM','Google Search Console & Analytics','Campagnes & parcours automatisés'] },
-    { short:'Finance', name:'Analyse financière & pilotage', color:0xe3b341,
-      css:'#e3b341', pos:[-1.32, -0.66, -0.28], count:78, spread:.78,
+    { short:'Finance', name:'Analyse financière & pilotage', color:0xd9c08a,
+      css:'#d9c08a', pos:[-1.32, -0.66, -0.28], count:78, spread:.78,
       skills:['Analyse des coûts & suivi budgétaire','Analyse de rentabilité','Indicateurs financiers & KPI','Tableaux de bord — Tableau','Aide à la décision'] },
-    { short:'Management', name:'Management & coordination', color:0xd98e8e,
-      css:'#d98e8e', pos:[1.35, -0.6, 0.3], count:78, spread:.78,
+    { short:'Management', name:'Management & coordination', color:0xe0a9a6,
+      css:'#e0a9a6', pos:[1.35, -0.6, 0.3], count:78, spread:.78,
       skills:['Coordination d\u2019équipes pluridisciplinaires','Gestion des parties prenantes','Répartition des tâches & objectifs','Management du personnel','Agile / Scrum · Jira · MS Project'] },
     { short:'Cœur de méthode', name:'Cœur de méthode — transverse', color:0xffffff,
       css:'#ffffff', pos:[0, 0, 0.6], count:52, spread:.5, core:true,
@@ -1380,7 +1419,7 @@ document.getElementById('toTop').addEventListener('click', () => {
 
   /* ---------- États / humeurs par section ---------- */
   const MOODS = {
-    hero:      { speed:1,   signal:1,   camX: 0.55, bg:new THREE.Color(0x651719) },
+    hero:      { speed:1,   signal:1,   camX: (innerWidth>960 ? -2.1 : 0), bg:new THREE.Color(0x651719) },
     interlude: { speed:1.5, signal:1.7, camX: 0,    bg:new THREE.Color(0x4d1012) },
     method:    { speed:.55, signal:.5, camX:-0.55, bg:new THREE.Color(0x651719) }
   };
@@ -1492,7 +1531,7 @@ document.getElementById('toTop').addEventListener('click', () => {
   });
 
   /* ---------- Boucle ---------- */
-  let t=0, mx=0, my=0, camXcur=0.55;
+  let t=0, mx=0, my=0, camXcur=(innerWidth>960 ? -2.1 : 0), camYcur=0;
   function animate(){
     requestAnimationFrame(animate);
     if (!visible && HAS_GSAP) return;
@@ -1581,8 +1620,9 @@ document.getElementById('toTop').addEventListener('click', () => {
       mx += (ndc.x - mx)*.04; my += (ndc.y - my)*.04;
       camXcur += (P.camX - camXcur)*.05;
       camera.position.x = mx*.35 + camXcur;
-      camera.position.y = my*-.3;
-      camera.lookAt(camXcur*.5, 0, 0);
+      camYcur += (((innerWidth<=960 && P.camX===0 && scrollY<innerHeight) ? -1.15 : 0) - camYcur)*.05;
+      camera.position.y = my*-.3 + camYcur;
+      camera.lookAt(camXcur*.5, camYcur, 0);
     }
     bgMat_lerp();
     renderer.render(scene, camera);
@@ -1591,6 +1631,31 @@ document.getElementById('toTop').addEventListener('click', () => {
   function bgMat_lerp(){ bgRef.lerp(targetBg, .04); }
 
   animate();
+})();
+</script>
+<script>
+(function(){
+  const cards=[...document.querySelectorAll('.philo-card')]; if(!cards.length) return;
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const G=typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined';
+  // 1. Entrée : les cartes arrivent en éventail, puis les numéros comptent
+  if(G&&!RM){
+    gsap.set(cards,{autoAlpha:0,y:80,rotation:i=>[-6,0,6][i]||0,transformOrigin:'50% 100%'});
+    ScrollTrigger.create({trigger:'.philo-cards',start:'top 82%',once:true,onEnter:()=>{
+      gsap.to(cards,{autoAlpha:1,y:0,rotation:0,duration:1.1,stagger:.16,ease:'power4.out',clearProps:'transform'});
+      cards.forEach((c,i)=>{const n=c.querySelector('.pc-num');const o={v:0};
+        gsap.to(o,{v:i+1,duration:.9,delay:.25+i*.16,ease:'power2.out',onUpdate:()=>n.textContent=String(Math.round(o.v)).padStart(2,'0')});});
+    }});
+  }
+  // 2. Inclinaison 3D + halo qui suit la souris (ordinateur uniquement)
+  if(!RM&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+    cards.forEach(c=>{
+      c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+        c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');
+        c.style.transform=`translateY(-6px) rotateX(${(.5-y)*10}deg) rotateY(${(x-.5)*12}deg)`;});
+      c.addEventListener('pointerleave',()=>{c.style.transform='';});
+    });
+  }
 })();
 </script>
 </body>
