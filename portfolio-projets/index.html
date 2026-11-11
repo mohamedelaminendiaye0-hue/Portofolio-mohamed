@@ -487,19 +487,32 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
   .philo-cards::before{content:'';position:absolute;left:-14px;top:0;bottom:0;width:2px;background:rgba(101,23,25,.16);border-radius:2px}
   .philo-vfill{display:block;position:absolute;left:-14px;top:0;bottom:0;width:2px;background:var(--bordeaux);transform:scaleY(var(--p));transform-origin:top;border-radius:2px}
 }
+/* ============ OUVERTURE : le réseau pousse comme un baobab ============ */
+#preloader{display:block;pointer-events:auto;cursor:pointer;background:var(--bordeaux);color:var(--creme)}
+.pl-row{position:absolute;left:1.8rem;right:1.8rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.pl-top{top:1.6rem}.pl-bottom{bottom:1.6rem}
+.pl-c{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,235,221,.8)}
+.pl-typed{display:flex;align-items:center;gap:.2rem;min-width:0}
+.pl-stage{color:var(--lime);white-space:nowrap}
+.pl-caret{width:.55em;height:1.1em;background:var(--lime);animation:plblink .8s steps(1) infinite;flex:none}
+@keyframes plblink{50%{opacity:0}}
+.pl-skip{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,235,221,.55)}
+.pl-quote{position:absolute;left:0;right:0;top:14vh;text-align:center;padding:0 6vw;font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(1.5rem,3.4vw,2.8rem);line-height:1.2;color:var(--creme)}
+.pl-quote em{color:var(--lime)}
+.pl-c,.pl-skip,.pl-quote{opacity:0}
+@media (max-width:560px){.pl-row{left:1rem;right:1rem}.pl-c{font-size:.58rem}.pl-skip{display:none}.pl-bottom{flex-direction:column;align-items:flex-start;gap:.5rem}.pl-quote{top:12vh}}
 </style>
 </head>
 <body>
 
 <!-- ================= PRELOADER ================= -->
 <div id="preloader" aria-hidden="true">
-  <div class="panel"></div>
-  <div class="panel p2"></div>
-  <div class="inner">
-    <p class="brand-pl">Mohamed El Amine Ndiaye</p>
-    <p class="count"><span id="countNum">00</span><sup>%</sup></p>
-    <div class="bar"><i id="loadBar"></i></div>
-    <p class="tagline">Portfolio — Digital &amp; AI</p>
+  <div class="pl-row pl-top"><span class="pl-c">Mohamed El Amine Ndiaye</span><span class="pl-c">Portfolio — 2026</span></div>
+  <p class="pl-quote">« Toute idée commence par une <em>graine</em>. »</p>
+  <div class="pl-row pl-bottom">
+    <span class="pl-c pl-typed"><span class="js-type"></span><i class="pl-caret"></i></span>
+    <span class="pl-skip">Cliquez pour passer</span>
+    <span class="pl-c pl-stage"><span class="js-stage">Germination</span> — <span class="js-count">00</span> %</span>
   </div>
 </div>
 
@@ -1004,8 +1017,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
    PRELOADER + INTRO HERO
 ========================================================= */
 const preloader = document.getElementById('preloader');
-const countNum = document.getElementById('countNum');
-const loadBar = document.getElementById('loadBar');
+const GROW = window.GROW = { g: 1 }; // 0 = graine, 1 = cerveau formé
 
 function splitWords(el) {
   const nodes = Array.from(el.childNodes);
@@ -1035,28 +1047,48 @@ function introHero() {
 }
 
 function dismissPreloader(instant) {
-  if (!HAS_GSAP || REDUCED || instant) {
-    preloader.style.display = 'none';
-    introHero();
-    return;
-  }
-  const tl = gsap.timeline();
-  tl.to('#preloader .inner', {autoAlpha:0, y:-30, duration:.5, ease:'power2.in'})
-    .to('#preloader .p2', {scaleY:1, duration:.55, ease:'power4.inOut'}, '-=.2')
-    .to('#preloader .panel.p2', {scaleY:0, transformOrigin:'bottom', duration:.65, ease:'power4.inOut'})
-    .to('#preloader .panel', {yPercent:-100, duration:.65, ease:'power4.inOut'}, '-=.45')
-    .set(preloader, {display:'none'})
-    .add(introHero, '-=.9');
+  preloader.style.display = 'none';
+  introHero();
 }
 
 if (HAS_GSAP && !REDUCED) {
-  const cnt = {v:0};
-  gsap.timeline()
-    .to(cnt, {v:100, duration:1.5, ease:'power2.inOut', onUpdate:() => {
-      countNum.textContent = String(Math.round(cnt.v)).padStart(2,'0');
-      loadBar.style.transform = 'scaleX(' + cnt.v/100 + ')';
-    }})
-    .add(() => dismissPreloader(false), '+=.15');
+  GROW.g = 0;
+  const q = sel => preloader.querySelector(sel);
+  const PHRASE = 'Chef de projet IA & digital — Paris';
+  const STAGES = [[0,'Germination'],[.2,'Croissance'],[.55,'Ramification'],[.8,'Connexions']];
+  const st = { t:0 };
+  gsap.set('#hero [data-split-hero] .wi', { yPercent:115 });
+  gsap.set('#hero [data-fade], .orbit-tag, .hint-click, .nav', { autoAlpha:0 });
+  if (lenis) lenis.stop();
+  document.documentElement.style.overflow = 'hidden';
+  const tl = gsap.timeline({ paused:true, onComplete:() => {
+    if (lenis) lenis.start();
+    document.documentElement.style.overflow = '';
+    preloader.style.display = 'none';
+  }});
+  tl.to(preloader, { backgroundColor:'rgba(101,23,25,0)', duration:.6, ease:'power2.out' }, .1)
+    .to(preloader.querySelectorAll('.pl-c, .pl-skip'), { opacity:1, duration:.6, stagger:.08 }, .2)
+    .fromTo(q('.pl-quote'), { y:24 }, { opacity:1, y:0, duration:1.1, ease:'power3.out' }, .4)
+    // La graine germe, le tronc monte, les branches se divisent puis allument chaque neurone
+    .to(GROW, { g:1, duration:5.2, ease:'power1.inOut', onUpdate:() => {
+        const p = GROW.g;
+        q('.js-count').textContent = String(Math.round(p*100)).padStart(2,'0');
+        let lbl = STAGES[0][1]; STAGES.forEach(([th,l]) => { if (p >= th) lbl = l; });
+        q('.js-stage').textContent = lbl;
+      } }, .3)
+    .to(st, { t:PHRASE.length, duration:1.8, ease:'none', onUpdate:() => { q('.js-type').textContent = PHRASE.slice(0, Math.round(st.t)); } }, .7)
+    .to(q('.pl-quote'), { autoAlpha:0, y:-18, duration:.8, ease:'power2.in' }, 3.4)
+    .to(preloader.querySelectorAll('.pl-c, .pl-skip'), { autoAlpha:0, duration:.5 }, 5.1)
+    .add(introHero, 5.1)
+    .to('.nav', { autoAlpha:1, duration:.9, ease:'power2.out' }, 5.4);
+  // Démarre dès que la scène 3D est prête (au plus tard après 1,8 s)
+  let started = false;
+  GROW.start = () => { if (!started){ started = true; tl.play(); } };
+  setTimeout(GROW.start, 1800);
+  // Clic ou touche : la croissance s'accélère jusqu'au cerveau
+  const skip = () => tl.timeScale(5);
+  preloader.addEventListener('click', skip);
+  window.addEventListener('keydown', skip, { once:true });
 } else {
   preloader.style.display = 'none';
 }
@@ -1821,12 +1853,105 @@ document.getElementById('toTop').addEventListener('click', () => {
     camera.updateProjectionMatrix();
   });
 
+  /* ---------- Ouverture : un arbre pousse depuis une graine, sa couronne devient le cerveau ---------- */
+  const sm = (a,b,x) => { const u=Math.min(1,Math.max(0,(x-a)/(b-a))); return u*u*(3-2*u); };
+  const growing = () => window.GROW && window.GROW.g < 1;
+  let tree = null, seed = null, treeMat = null;
+  const leafT = new Float32Array(totalPts);
+  if (growing()){
+    let minY=1e9, cx=0, cz=0;
+    for (let i=0;i<totalPts;i++){ minY=Math.min(minY,pPos[i*3+1]); cx+=pPos[i*3]; cz+=pPos[i*3+2]; }
+    cx/=totalPts; cz/=totalPts;
+    const root = new THREE.Vector3(cx, minY-1.05, cz);
+    const fork = new THREE.Vector3(cx, minY-.25, cz);
+    const tPos=[], tT=[];
+    const A=new THREE.Vector3(), B=new THREE.Vector3(), C=new THREE.Vector3(), O=new THREE.Vector3();
+    // Branche courbe (monte d'abord, puis s'ouvre), en plusieurs fibres pour donner de l'épaisseur
+    function branch(a, b, steps, t0, strands, spread=1){
+      const len = a.distanceTo(b);
+      C.set(a.x, a.y + Math.max(0,(b.y-a.y))*.75 + len*.18, a.z);
+      for (let f=0; f<strands; f++){
+        O.set(Math.random()-.5, (Math.random()-.5)*.3, Math.random()-.5).normalize().multiplyScalar(f===0 ? 0 : (.008 + .011*f)*spread);
+        for (let i=0;i<steps;i++){
+          for (const u of [i/steps,(i+1)/steps]){
+            const w=(1-u)*(1-u), m=2*(1-u)*u, e=u*u, taper=1-.55*u;
+            tPos.push(w*a.x+m*C.x+e*b.x + O.x*taper, w*a.y+m*C.y+e*b.y + O.y*taper, w*a.z+m*C.z+e*b.z + O.z*taper);
+            tT.push(t0 + len*u);
+          }
+        }
+      }
+      return t0 + len;
+    }
+    function build(ids, from, t0, depth){
+      const n = ids.length;
+      if (n===1){
+        const i=ids[0]; B.set(pPos[i*3],pPos[i*3+1],pPos[i*3+2]);
+        leafT[i] = branch(from, B.clone(), 5, t0, 1);
+        return;
+      }
+      let x=0,y=0,z=0; ids.forEach(i=>{ x+=pPos[i*3]; y+=pPos[i*3+1]; z+=pPos[i*3+2]; });
+      const c = new THREE.Vector3(x/n,y/n,z/n);
+      const node = depth===0 ? fork.clone() : from.clone().lerp(c, n>40 ? .42 : .55);
+      const strands = Math.max(1, Math.min(14, Math.round(Math.sqrt(n)/1.4)));
+      const tn = branch(from, node, depth===0 ? 16 : 8, t0, strands, depth===0 ? 2.4 : (depth===1 ? 1.5 : 1));
+      // Division selon l'axe le plus étendu : les branches se répartissent naturellement
+      let vx=0,vy=0,vz=0; ids.forEach(i=>{ vx+=(pPos[i*3]-c.x)**2; vy+=(pPos[i*3+1]-c.y)**2; vz+=(pPos[i*3+2]-c.z)**2; });
+      const ax = vx>=vy && vx>=vz ? 0 : (vy>=vz ? 1 : 2);
+      const sorted = ids.slice().sort((p,q)=>pPos[p*3+ax]-pPos[q*3+ax]);
+      const h = n>>1;
+      build(sorted.slice(0,h), node, tn, depth+1);
+      build(sorted.slice(h), node, tn, depth+1);
+    }
+    build(Array.from({length:totalPts},(_,i)=>i), root, 0, 0);
+    let maxT=0; for (let i=0;i<totalPts;i++) maxT=Math.max(maxT,leafT[i]);
+    for (let i=0;i<tT.length;i++) tT[i]/=maxT;
+    for (let i=0;i<totalPts;i++) leafT[i]/=maxT;
+    const tGeo = new THREE.BufferGeometry();
+    tGeo.setAttribute('position', new THREE.Float32BufferAttribute(tPos,3));
+    tGeo.setAttribute('aT', new THREE.Float32BufferAttribute(tT,1));
+    treeMat = new THREE.ShaderMaterial({
+      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      uniforms:{ uG:{value:0}, uFade:{value:1}, uBase:{value:new THREE.Color(0xf1ebdd)}, uTip:{value:new THREE.Color(0xc8f542)} },
+      vertexShader:`attribute float aT; varying float vT;
+        void main(){ vT=aT; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+      fragmentShader:`uniform float uG; uniform float uFade; uniform vec3 uBase; uniform vec3 uTip; varying float vT;
+        void main(){ if(vT>uG) discard;
+          float tip = smoothstep(.07,0.0,uG-vT);
+          gl_FragColor = vec4(mix(uBase*.6, uTip*1.25, tip), (.32+.68*tip)*uFade); }`
+    });
+    tree = new THREE.LineSegments(tGeo, treeMat);
+    brain.add(tree);
+    seed = new THREE.Sprite(new THREE.SpriteMaterial({ map:sigTex, color:0xc8f542, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, opacity:0 }));
+    seed.position.copy(root); seed.scale.set(.5,.5,1);
+    brain.add(seed);
+  }
+  function updateGrowth(){
+    if (!tree) return { synF:1, GT:2 };
+    const g = window.GROW.g;
+    const GT = Math.max(0,(g-.04)/.68);
+    treeMat.uniforms.uG.value = GT;
+    treeMat.uniforms.uFade.value = 1 - sm(.84,1,g);
+    seed.material.opacity = sm(0,.06,g)*(1-sm(.45,.75,g));
+    seed.scale.setScalar(.35 + .25*Math.sin(g*40)*(1-g));
+    const synF = sm(.66,.9,g);
+    lines.material.opacity = .5*synF;
+    cortexMesh.material.opacity = .045*sm(.7,.96,g);
+    if (g >= 1){
+      brain.remove(tree); brain.remove(seed);
+      tree.geometry.dispose(); treeMat.dispose(); seed.material.dispose();
+      tree = null; lines.material.opacity = .5; cortexMesh.material.opacity = .045;
+      return { synF:1, GT:2 };
+    }
+    return { synF, GT };
+  }
+
   /* ---------- Boucle ---------- */
-  let t=0, mx=0, my=0, camXcur=(innerWidth>960 ? -2.1 : 0), camYcur=0;
+  let t=0, mx=0, my=0, camXcur=(growing() ? 0 : (innerWidth>960 ? -2.1 : 0)), camYcur=(growing() ? -.3 : (innerWidth<=960 ? -1.15 : 0));
   function animate(){
     requestAnimationFrame(animate);
     if (!visible && HAS_GSAP) return;
     t += 0.008 * P.speed;
+    const GR = updateGrowth();
 
     // Focus (survol) : facteurs par grappe
     const focusTgt = CLUSTERS.map((_,k)=> (hoverK<0||hoverK===k) ? 1 : .13);
@@ -1852,6 +1977,7 @@ document.getElementById('toTop').addEventListener('click', () => {
       }
       pAlpha[i] = i===hoveredNeuron ? 1 : .55*focusCur[k] + .25;
       pSize[i] = baseSize[i]*(0.75 + 0.45*focusCur[k] + pb*1.1)*(i===hoveredNeuron?1.65:1) + breath*.4;
+      if (GR.GT < 2){ const a=Math.min(1,Math.max(0,(GR.GT-leafT[i])/.05)); pAlpha[i]*=a; pSize[i]*=a*(1+3*a*(1-a)); }
     }
     pGeo.attributes.aAlpha.needsUpdate = true;
     pGeo.attributes.aSize.needsUpdate = true;
@@ -1884,7 +2010,7 @@ document.getElementById('toTop').addEventListener('click', () => {
         pPos[a]  +(pPos[b]  -pPos[a]  )*s.t,
         pPos[a+1]+(pPos[b+1]-pPos[a+1])*s.t,
         pPos[a+2]+(pPos[b+2]-pPos[a+2])*s.t);
-      s.sp.material.opacity = .25+.75*focusCur[s.k];
+      s.sp.material.opacity = (.25+.75*focusCur[s.k])*GR.synF;
     });
 
     // Raycast sur les points eux-mêmes, plus sur des zones invisibles.
@@ -1909,9 +2035,9 @@ document.getElementById('toTop').addEventListener('click', () => {
       brain.rotation.x = -.12 + Math.sin(t*.2)*.06;
       brain.position.y = Math.sin(t*.6)*.06;
       mx += (ndc.x - mx)*.04; my += (ndc.y - my)*.04;
-      camXcur += (P.camX - camXcur)*.05;
+      camXcur += ((tree ? 0 : P.camX) - camXcur)*.05;
       camera.position.x = mx*.35 + camXcur;
-      camYcur += (((innerWidth<=960 && P.camX===0 && scrollY<innerHeight) ? -1.15 : 0) - camYcur)*.05;
+      camYcur += ((tree ? -.3 : ((innerWidth<=960 && P.camX===0 && scrollY<innerHeight) ? -1.15 : 0)) - camYcur)*.05;
       camera.position.y = my*-.3 + camYcur;
       camera.lookAt(camXcur*.5, camYcur, 0);
     }
@@ -1922,6 +2048,7 @@ document.getElementById('toTop').addEventListener('click', () => {
   function bgMat_lerp(){ bgRef.lerp(targetBg, .04); }
 
   animate();
+  if (window.GROW && window.GROW.start) requestAnimationFrame(() => requestAnimationFrame(window.GROW.start));
 })();
 </script>
 <script>
