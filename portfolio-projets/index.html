@@ -738,10 +738,8 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
       <button class="filter-btn active" data-filter="all" data-cursor>Tous les projets</button>
       <button class="filter-btn" data-filter="erp" data-cursor>Digital &amp; ERP</button>
       <button class="filter-btn" data-filter="ai" data-cursor>IA &amp; Agents</button>
-      <button class="filter-btn" data-filter="auto" data-cursor>Automatisation</button>
       <button class="filter-btn" data-filter="cyber" data-cursor>Cybersécurité</button>
       <button class="filter-btn" data-filter="data" data-cursor>Data &amp; Pilotage</button>
-      <button class="filter-btn" data-filter="design" data-cursor>Product Design</button>
     </div>
 
     <div class="works-grid" id="worksGrid">
@@ -832,84 +830,6 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
           <p>Chef de projet produit (3 développeurs + 1 ingénieur cybersécurité) : chaque document génère son écriture SYSCOHADA, assistants IA Massamba (comptable) et Ibrahima (stock, en français et wolof), isolation multi-tenant prouvée par plus de 2 000 tests.</p>
           <p class="stack">Java · Spring Boot · PostgreSQL (RLS) · Angular · OCR + LLM</p>
           <button type="button" class="case-link" data-case="senova">Lire l'étude de cas <span class="arr">→</span></button>
-        </div>
-      </article>
-
-      <article class="card" data-cat="ai" data-case="Multi-agents" data-tilt data-cursor-view>
-        <div class="card-visual">
-          <div class="layers">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
-              <rect width="640" height="400" fill="#111110"/>
-              <g stroke="#F1EBDD" stroke-opacity=".5" fill="none">
-                <circle cx="320" cy="200" r="42"/><circle cx="150" cy="110" r="28"/><circle cx="500" cy="110" r="28"/>
-                <circle cx="150" cy="300" r="28"/><circle cx="500" cy="300" r="28"/>
-                <path d="M184 128l98 48M456 128l-98 48M184 282l98-48M456 282l-98-48"/>
-              </g>
-              <circle cx="320" cy="200" r="5" fill="#c8f542"/><circle cx="150" cy="110" r="4" fill="#c8f542"/><circle cx="500" cy="300" r="4" fill="#c8f542"/>
-              <text x="320" y="376" text-anchor="middle" fill="#F1EBDD" fill-opacity=".75" font-family="monospace" font-size="12" letter-spacing="4">RAG · AGENTS · ORCHESTRATION</text>
-            </svg>
-          </div>
-          <span class="card-status"><i></i>Prototype fonctionnel</span>
-        </div>
-        <div class="card-body">
-          <span class="card-cat">IA &amp; Agents</span>
-          <h3>Système multi-agents — Assistant métier</h3>
-          <p>Conception et prototypage d'une architecture multi-agents : agents spécialisés, orchestration LangGraph, intégration de LLM et validation de POC.</p>
-          <p class="stack">Python · LangChain · LangGraph · RAG</p>
-          <button type="button" class="case-link" data-case="Multi-agents">Lire l'étude de cas <span class="arr">→</span></button>
-        </div>
-      </article>
-
-      <article class="card" data-cat="auto" data-case="Automatisation" data-tilt data-cursor-view>
-        <div class="card-visual">
-          <div class="layers">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
-              <rect width="640" height="400" fill="#4d1012"/>
-              <g stroke="#F1EBDD" stroke-opacity=".55" fill="none">
-                <path d="M60 200h90"/><circle cx="190" cy="200" r="34"/><path d="M224 200h70"/>
-                <rect x="294" y="170" width="80" height="60"/><path d="M374 200h70"/>
-                <circle cx="480" cy="200" r="34"/><path d="M514 200h66"/>
-              </g>
-              <path d="M158 200h-40" stroke="#c8f542" stroke-width="2"/><path d="M560 200h-40" stroke="#c8f542" stroke-width="2"/>
-              <circle cx="190" cy="200" r="4" fill="#c8f542"/><circle cx="480" cy="200" r="4" fill="#c8f542"/>
-              <text x="320" y="376" text-anchor="middle" fill="#F1EBDD" fill-opacity=".75" font-family="monospace" font-size="12" letter-spacing="4">TRIGGER · WORKFLOW · ACTION</text>
-            </svg>
-          </div>
-          <span class="card-status"><i></i>POC opérationnel</span>
-        </div>
-        <div class="card-body">
-          <span class="card-cat">Automatisation</span>
-          <h3>Workflows automatisés — IA &amp; infra</h3>
-          <p>Expérimentation de pipelines automatisés : orchestration n8n, déploiement de modèles sur RunPod avec vLLM, chaînages d'outils et supervision LangSmith.</p>
-          <p class="stack">n8n · RunPod · vLLM · LangSmith</p>
-          <button type="button" class="case-link" data-case="Automatisation">Lire l'étude de cas <span class="arr">→</span></button>
-        </div>
-      </article>
-
-      <article class="card" data-cat="design" data-case="Prototypage" data-tilt data-cursor-view>
-        <div class="card-visual">
-          <div class="layers">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
-              <rect width="640" height="400" fill="#F1EBDD"/>
-              <g stroke="#111110" stroke-opacity=".6" fill="none">
-                <rect x="120" y="70" width="400" height="260"/><line x1="120" y1="110" x2="520" y2="110"/>
-                <rect x="145" y="135" width="150" height="90"/><rect x="315" y="135" width="180" height="14"/>
-                <rect x="315" y="162" width="140" height="10"/><rect x="315" y="184" width="160" height="10"/>
-                <rect x="145" y="250" width="120" height="34"/><rect x="285" y="250" width="120" height="34"/>
-              </g>
-              <rect x="145" y="250" width="120" height="34" fill="#651719"/>
-              <circle cx="320" cy="90" r="4" fill="#651719"/>
-              <text x="320" y="370" text-anchor="middle" fill="#111110" fill-opacity=".75" font-family="monospace" font-size="12" letter-spacing="4">WIREFRAME · PROTOTYPE · TEST</text>
-            </svg>
-          </div>
-          <span class="card-status"><i></i>Prototype fonctionnel</span>
-        </div>
-        <div class="card-body">
-          <span class="card-cat">Product Design</span>
-          <h3>Prototypes d'applications métier</h3>
-          <p>Conception de prototypes d'interfaces et d'applications métier testables, du besoin utilisateur à une solution fonctionnelle.</p>
-          <p class="stack">Figma · Prototypage · User Flows</p>
-          <button type="button" class="case-link" data-case="Prototypage">Lire l'étude de cas <span class="arr">→</span></button>
         </div>
       </article>
 
@@ -1421,36 +1341,6 @@ const CASES = {
     roadmap: '<strong>V2 des assistants IA :</strong> ajout du TTS et du STT, et dialogue en wolof écrit en caractères arabes — pour commercialiser une version lite de gestion de stock dans l’application mobile.',
     stack: ['Java', 'Spring Boot', 'PostgreSQL — Row Level Security', 'Flyway', 'Angular', 'TypeScript', 'Testcontainers', 'OCR + LLM', 'Mobile Money', 'Bot Telegram', 'Emails transactionnels'],
     note: 'Projet confidentiel : les détails d’implémentation ne sont pas communiqués. Démonstration réalisée sur données d’exemple.'
-  },
-  'Multi-agents': {
-    cat: 'IA & Agents',
-    title: 'Système multi-agents — Assistant métier',
-    status: 'Prototype fonctionnel',
-    context: 'Conception et prototypage · Architecture multi-agents',
-    problem: 'Conception et prototypage d’une architecture multi-agents : agents spécialisés, orchestration LangGraph, intégration de LLM et validation de POC.',
-    actions: [], results: [],
-    stack: ['Python', 'LangChain', 'LangGraph', 'RAG'],
-    note: 'Étude de cas détaillée en cours de rédaction.'
-  },
-  'Automatisation': {
-    cat: 'Automatisation',
-    title: 'Workflows automatisés — IA & infra',
-    status: 'POC opérationnel',
-    context: 'Expérimentation · Pipelines automatisés',
-    problem: 'Expérimentation de pipelines automatisés : orchestration n8n, déploiement de modèles sur RunPod avec vLLM, chaînages d’outils et supervision LangSmith.',
-    actions: [], results: [],
-    stack: ['n8n', 'RunPod', 'vLLM', 'LangSmith'],
-    note: 'Étude de cas détaillée en cours de rédaction.'
-  },
-  'Prototypage': {
-    cat: 'Product Design',
-    title: 'Prototypes d’applications métier',
-    status: 'Prototype fonctionnel',
-    context: 'Conception · Du besoin utilisateur à la solution fonctionnelle',
-    problem: 'Conception de prototypes d’interfaces et d’applications métier testables, du besoin utilisateur à une solution fonctionnelle.',
-    actions: [], results: [],
-    stack: ['Figma', 'Prototypage', 'User Flows'],
-    note: 'Étude de cas détaillée en cours de rédaction.'
   }
 };
 
