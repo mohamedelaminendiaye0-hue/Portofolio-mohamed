@@ -420,6 +420,25 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
 @media (hover:hover){.philo-cards:hover .philo-card:not(:hover){opacity:.55;filter:saturate(.7)}}
 .philo-card{transition:transform .45s var(--ease),border-color .35s,box-shadow .45s var(--ease),opacity .4s,filter .4s}
 .expert + .tools{padding-top:2rem}
+/* ============ FIL DE LA PHILOSOPHIE ============ */
+.philo-cards{position:relative;--p:0;--col:calc((100% - 3rem)/3)}
+.philo-rail{grid-column:1/-1;position:relative;height:14px;margin-bottom:-.2rem}
+.philo-rail::before,.philo-rail::after{content:'';position:absolute;top:6px;height:2px;left:calc(1.8rem + 6px);right:calc(var(--col) - 1.8rem - 6px);background:rgba(101,23,25,.16);border-radius:2px}
+.philo-rail::after{background:var(--bordeaux);transform:scaleX(var(--p));transform-origin:left}
+.pr-dot{position:absolute;top:0;width:14px;height:14px;border-radius:50%;background:var(--creme);border:2px solid rgba(101,23,25,.3);z-index:1;transition:background .4s,border-color .4s,box-shadow .5s var(--ease),transform .5s var(--ease)}
+.pr-dot:nth-child(1){left:1.8rem}
+.pr-dot:nth-child(2){left:calc(var(--col) + 1.5rem + 1.8rem)}
+.pr-dot:nth-child(3){left:calc(2*var(--col) + 3rem + 1.8rem)}
+.pr-dot.lit{background:var(--bordeaux);border-color:var(--bordeaux);box-shadow:0 0 0 5px rgba(101,23,25,.14);transform:scale(1.15)}
+.philo-vfill{display:none}
+.philo-card .pc-num{opacity:.35;transition:opacity .5s}
+.philo-card.lit .pc-num{opacity:1}
+.philo-card.lit{border-color:rgba(101,23,25,.3)}
+@media (max-width:960px){
+  .philo-rail{display:none}
+  .philo-cards::before{content:'';position:absolute;left:-14px;top:0;bottom:0;width:2px;background:rgba(101,23,25,.16);border-radius:2px}
+  .philo-vfill{display:block;position:absolute;left:-14px;top:0;bottom:0;width:2px;background:var(--bordeaux);transform:scaleY(var(--p));transform-origin:top;border-radius:2px}
+}
 </style>
 </head>
 <body>
@@ -511,6 +530,8 @@ footer{background:var(--noir);color:var(--gris-clair);padding:0;position:relativ
     <p class="meta" data-fade>01 — Ma philosophie</p>
     <blockquote data-split>« Une idée n'a de valeur que lorsqu'elle devient une <em>solution</em>. »</blockquote>
     <div class="philo-cols philo-cards">
+      <div class="philo-rail" aria-hidden="true"><span class="pr-dot"></span><span class="pr-dot"></span><span class="pr-dot"></span></div>
+      <i class="philo-vfill" aria-hidden="true"></i>
       <article class="philo-card"><span class="pc-num">01</span><h3>Comprendre le besoin</h3><p>Partir d'un problème, comprendre les besoins qui se cachent derrière et construire une réponse concrète. Mon approche combine <strong>analyse métier</strong>, <strong>gestion de projet</strong>, <strong>conception produit</strong> et <strong>compréhension technique</strong>.</p></article>
       <article class="philo-card"><span class="pc-num">02</span><h3>Structurer & piloter</h3><p>Je peux structurer une initiative, définir sa feuille de route, concevoir son fonctionnement, expérimenter une solution et coordonner les acteurs nécessaires à sa réalisation.</p></article>
       <article class="philo-card"><span class="pc-num">03</span><h3>La technologie comme levier</h3><p>L'IA, l'automatisation et les technologies numériques sont des <strong>leviers</strong> que j'utilise lorsqu'ils répondent réellement au besoin.</p></article>
@@ -1647,6 +1668,21 @@ document.getElementById('toTop').addEventListener('click', () => {
         gsap.to(o,{v:i+1,duration:.9,delay:.25+i*.16,ease:'power2.out',onUpdate:()=>n.textContent=String(Math.round(o.v)).padStart(2,'0')});});
     }});
   }
+  // Fil : se dessine au défilement et allume chaque carte qu'il atteint
+  const wrap=document.querySelector('.philo-cards'), dots=[...document.querySelectorAll('.pr-dot')];
+  function setP(p){
+    wrap.style.setProperty('--p',p.toFixed(3));
+    const mobile=innerWidth<=960;
+    cards.forEach((c,i)=>{
+      const th=mobile ? (c.offsetTop/wrap.offsetHeight) : i/(cards.length-1);
+      const on=p>=th-0.001; c.classList.toggle('lit',on); if(dots[i]) dots[i].classList.toggle('lit',on);
+    });
+  }
+  if(G&&!RM){
+    setP(0);
+    ScrollTrigger.create({trigger:wrap,start:'top 70%',end:()=>innerWidth<=960?'bottom 60%':'bottom 45%',scrub:.6,
+      onUpdate:self=>setP(self.progress),onLeave:()=>setP(1),invalidateOnRefresh:true});
+  } else setP(1);
   // 2. Inclinaison 3D + halo qui suit la souris (ordinateur uniquement)
   if(!RM&&matchMedia('(hover:hover) and (pointer:fine)').matches){
     cards.forEach(c=>{
